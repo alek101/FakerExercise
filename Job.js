@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const jobCategories = require('../lib/jobCategories');
-const reportReasons = require('../lib/reportReasons');
-const locations = require('../lib/locations');
+const {jobCategories} = require('../lib/jobCategories');
+const {reportReasons} = require('../lib/reportReasons');
+const {locations} = require('../lib/locations');
 const filterJobs = require('../lib/filterJobs');
 
 
