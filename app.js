@@ -11,21 +11,9 @@ const {locations} = require('./lib/locations')
 const {filterJobs}=require('./lib/filterJobs');
 
 
-console.log(filterJobs({
-    title:'nesto',
-    creator: 'neko',
-    type: 'job',
-    minPrice: 20,
-    maxPrice: 30,
-    category: 'casovi',
-    location: 'Beograd',
-    tags: ['tag1','tag2'],
-    categories: ['category 1', 'category 11']
-},true))
-
 const {filterJobsB}=require('./lib/filterJobsB');
 
-console.log(filterJobsB({
+console.log(filterJobsB({query: {
     title:'nesto',
     creator: 'neko',
     type: 'job',
@@ -34,6 +22,6 @@ console.log(filterJobsB({
     category: 'casovi',
     location: 'Beograd',
     tags: ['tag1','tag2'],
-    categories: ['category 1', 'category 11']
-},true))
+    sortTimeAsc: true,
+}},true))
 
