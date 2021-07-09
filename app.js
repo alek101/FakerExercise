@@ -23,5 +23,6 @@ console.log(filterJobsB({query: {
     location: 'Beograd',
     tags: ['tag1','tag2'],
     sortTimeAsc: true,
+    sortTimeDec: true,
 }},true))
 
