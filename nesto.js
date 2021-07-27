@@ -8,3 +8,7 @@ for(let voce of niz)
 }
 
 console.log(obj);
+
+const test = function (...roles){ console.log(roles)};
+
+test('admin','user');
