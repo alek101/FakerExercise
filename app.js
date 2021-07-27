@@ -8,21 +8,22 @@ const {locations} = require('./lib/locations')
 
 // console.log(pickFromArray(locations));
 
-const {filterJobs}=require('./lib/filterJobs');
+// const {filterJobs}=require('./lib/filterJobs');
 
 
-const {filterJobsB}=require('./lib/filterJobsB');
+// const {filterJobsB}=require('./lib/filterJobsB');
 
-console.log(filterJobsB({query: {
-    title:'nesto',
-    creator: 'neko',
-    type: 'job',
-    minPrice: 20,
-    maxPrice: 30,
-    category: 'casovi',
-    location: 'Beograd',
-    tags: ['tag1','tag2'],
-    sortTimeAsc: true,
-    sortTimeDec: true,
-}},true))
+// console.log(filterJobsB({query: {
+//     title:'nesto',
+//     creator: 'neko',
+//     type: 'job',
+//     minPrice: 20,
+//     maxPrice: 30,
+//     category: 'casovi',
+//     location: 'Beograd',
+//     tags: ['tag1','tag2'],
+//     sortTimeAsc: true,
+//     sortTimeDec: true,
+// }},true))
 
+console.log(faker.internet.password());
