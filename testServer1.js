@@ -28,14 +28,15 @@ async function getLocations(url){
 
 async function mihailo2(fn, repetitionNumber, url){
   const bigArray = [];
+  const time = Date.now();
   for (let i=0; i<repetitionNumber; i++){
     let smallArray = fn(url);
     bigArray.push(smallArray);
     console.log(`server called ${i+1} time`);
   }
+  const time2 = Date.now()-time; console.log(time2);
   const result = await Promise.all(bigArray);
-  // console.log(result);
   return result;
 }
 
-mihailo2(getLocations, 399, url);
+mihailo2(getLocations, 395, url);
