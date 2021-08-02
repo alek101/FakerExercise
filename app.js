@@ -27,3 +27,5 @@ const {locations} = require('./lib/locations')
 // }},true))
 
 console.log(faker.internet.password());
+console.log(faker.datatype.number({'min': 1, 'max': 5},));
+console.log(faker.address.city());
