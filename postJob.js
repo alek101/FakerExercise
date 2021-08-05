@@ -42,7 +42,9 @@ async function logIn(url,email,password){
 async function fetchData(url,options){
   let result;
   await fetch(url,options)
-  .then(res=>res.json())
+  .then(res=>{
+    // console.log(res)
+    return res.json()})
   .then(res=> {
     result = res;
   }).catch((err) =>
@@ -79,7 +81,7 @@ async function main(){
     },
     body: JSON.stringify({
       title: faker.lorem.word(),
-      type: 'job',
+      type: 'service',
       description: faker.lorem.sentence(),
       // description: longLorem,
       category: oneCategory,
