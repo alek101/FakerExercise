@@ -19,12 +19,17 @@ function binarySearch (array, value) {
   while(true) {
     middle = Math.floor((left+right)/2);
     if (array[middle] === value) return middle;
+    if (array[right] === value) return right;
     if (array[middle] < value) left = middle;
     if (array[middle] > value) right = middle;
-    if (right-left <= 1) return -1;
+    if (right-left <=1 ) return -1;
   }
 }
 
 console.log('index is', binarySearch(array, target), 'for target ', target);
 
 console.log('index is', binarySearch(array, 1005), 'for target ', 1005);
+
+console.log('index is', binarySearch([1,2], 2), 'for target ', 2);
+
+console.log('index is', binarySearch([1,2], 1), 'for target ', 1);
