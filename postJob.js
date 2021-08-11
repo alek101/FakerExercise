@@ -55,9 +55,13 @@ async function fetchData(url,options){
 }
 
 function getOneName(array){
+  return getOneArray(array).name;
+}
+
+function getOneArray(array){
   const len = array.length;
   const ran = Math.floor(Math.random()*len);
-  return array[ran].name;
+  return array[ran];
 }
 
 async function main(){
@@ -81,7 +85,6 @@ async function main(){
     },
     body: JSON.stringify({
       title: faker.lorem.word(),
-      type: 'service',
       description: faker.lorem.sentence(),
       // description: longLorem,
       category: oneCategory,
@@ -89,8 +92,12 @@ async function main(){
       fromDate: Date.now(),
       toDate: Date.now(),
       price: faker.datatype.number({min: 100, max: 1000}),
+      // price: -1000,
       fromTime: faker.lorem.word(),
-      toTime: faker.lorem.word()
+      toTime: faker.lorem.word(),
+      type: getOneArray(['job', 'service']),
+      priceType: getOneArray(['fixed', 'per hour']),
+      tags: faker.lorem.words().split(' '),
     })
   }
 
@@ -98,7 +105,7 @@ async function main(){
 
   const job = await fetchData(web+'/api/v1/jobs',options);
 
-  await console.log(job);
+  // await console.log(job);
   console.log('novi');
 }
 
@@ -108,6 +115,6 @@ function bombardemnt(num=100){
   }
 }
 
-bombardemnt(1)
+bombardemnt(300)
 
 // console.log(main());
