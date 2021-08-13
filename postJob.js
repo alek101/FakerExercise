@@ -115,6 +115,6 @@ function bombardemnt(num=100){
   }
 }
 
-bombardemnt(300)
+bombardemnt(1)
 
 // console.log(main());
