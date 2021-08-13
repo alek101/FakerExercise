@@ -47,5 +47,5 @@ function radexSort(array){
   return array;
 }
 
-;
+
 console.log(radexSort(ar));
