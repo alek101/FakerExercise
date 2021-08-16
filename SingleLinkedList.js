@@ -37,7 +37,7 @@ class SinglyLinkedList{
   // }
 
   pop(){
-    if(this.length<=0) return undefined;
+    if(this.length==0) return undefined;
     if(this.length==1) {
       this.length--;
       this.head=null;
@@ -54,14 +54,44 @@ class SinglyLinkedList{
       this.tail.next=null;
       this.length--;
     }
+    return this;
+  }
+
+  shift(){
+    if(this.length==0) return undefined;
+    if(this.length==1) {
+      this.length--;
+      this.head=null;
+      this.tail=null;
+    }
+    if(this.length>1){
+      this.head = this.head.next;
+      this.length--;
+    }
+    return this;
+  }
+
+  unshift(val){
+    let node = new Node(val);
+    if(this.length==0){
+      this.head=node;
+      this.tail=node;
+      return this;
+    }
+    node.next=this.head;
+    this.head=node;
+    this.length++;
+    return this;
   }
 
 }
 
 const list = new SinglyLinkedList()
+
 list.push("hello")
 list.push("goodbye")
 list.push("next")
 list.push("next")
-console.log(list)
-list.pop()
+console.log(list);
+list.unshift("1st")
+console.log(list);
