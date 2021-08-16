@@ -105,7 +105,7 @@ class SinglyLinkedList{
   }
 
   insert(val,index){
-    if(index<0 || index>this.length) return false;
+    if(index<0 || index>this.length || isNaN(index)) return false;
     if(index==0) return this.unshift(val);
     if(index==this.length) return this.push(val);
     let preNode = this.get(index-1);
@@ -120,16 +120,44 @@ class SinglyLinkedList{
     return false;
   }
 
+  remove(index){
+    if(index<0 || index>=this.length || isNaN(index)) return false;
+    if(index==0) return this.shift();
+    if(index==this.length-1) return this.pop();
+    let preNode = this.get(index-1);
+    if(preNode){
+      preNode.next = preNode.next.next;
+      this.length--;
+      return true;
+    }
+    return false;
+  }
+
+  reverse(){
+    let current = this.head;
+    let next = this.head.next;
+    let previous = null;
+    while(next){
+      previous = current;
+      current = next;
+      next = current.next;
+      current.next = previous;
+    }
+    let temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
+    this.tail.next = null;
+    return this;
+  }
+  
 }
 
 const list = new SinglyLinkedList()
 
 list.push("hello")
 list.push("goodbye")
-list.push("next")
-list.push("next")
+list.push("next1")
+list.push("next2")
 console.log(list);
-console.log(list.insert("novi",1));
-console.log(list);
-console.log(list.insert("novi",0));
-console.log(list);
+list.reverse();
+console.log(list)
