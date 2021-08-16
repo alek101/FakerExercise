@@ -32,6 +32,7 @@ async function logIn(url,email,password){
   .then(res=>res.json())
   .then(res=> {
     result = res;
+    // console.log(res);
   }).catch((err) =>
   {
     console.log(err);

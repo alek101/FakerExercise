@@ -6,8 +6,6 @@ class Node{
     this.val = val;
     this.next = null;
   }
-
-
 }
 
 class SinglyLinkedList{
@@ -19,28 +17,51 @@ class SinglyLinkedList{
 
   push(val){
     let node = new Node(val);
-    this.length++;
-    if (this.tail != null) {
-      this.tail.next=node;
-    }
-    
-    this.tail=node;
-    if (this.head == null) {
+    if (!this.head) {
       this.head = node;
     }
-
+    else {
+      this.tail.next=node;
+    }
+    this.tail=node;
+    this.length++;
+    return this;
   }
+
+  // traverse(){
+  //   let current=this.head;
+  //   while(current){
+  //     console.log(current);
+  //     current=current.next;
+  //   }
+  // }
+
+  pop(){
+    if(this.length<=0) return undefined;
+    if(this.length==1) {
+      this.length--;
+      this.head=null;
+      this.tail = null;
+    }
+    if(this.length>1) {
+      let pre_current = this.head;
+      let current = pre_current.next;
+      while(current){
+        pre_current=pre_current.next;
+        current=current.next;
+      }
+      this.tail=pre_current;
+      this.tail.next=null;
+      this.length--;
+    }
+  }
+
 }
-
-
-// const first = new Node("Hi")
-// first.next = new Node("there")
-// first.next.next = new Node("how")
-
-// console.log(first)
 
 const list = new SinglyLinkedList()
 list.push("hello")
 list.push("goodbye")
 list.push("next")
+list.push("next")
 console.log(list)
+list.pop()
