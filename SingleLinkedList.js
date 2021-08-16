@@ -85,13 +85,23 @@ class SinglyLinkedList{
   }
 
   get(index){
-    if(index>=this.length) return undefined;
+    if(index>=this.length || index<0 || isNaN(index)) return undefined;
     let current=this.head;
     if (index == 0) return current;
     for (let i=0; i<index; i++){
       current=current.next;
     }
     return current;
+  }
+
+  set(val,index){
+    let current = this.get(index);
+    console.log('current',current)
+    if(current){
+      current.val=val;
+      return current;
+    }
+    return false;
   }
 
 }
@@ -103,7 +113,6 @@ list.push("goodbye")
 list.push("next")
 list.push("next")
 console.log(list);
-console.log(list.get(0));
-console.log(list.get(1));
-console.log(list.get(2));
-console.log(list.get(10));
+console.log(list.set('Mihailo',1));
+console.log(list.set('fail',10));
+console.log(list.get('2'));
