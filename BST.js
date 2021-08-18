@@ -70,7 +70,7 @@ class BinarySearchTree {
 
 }
 
-module.exports.BinarySearchTree;
+
 
 // const tree = new BinarySearchTree();
 
@@ -85,3 +85,5 @@ module.exports.BinarySearchTree;
 // console.log(tree.find(100));
 // console.log(tree.find(20));
 // console.log(tree.find(53));
+
+module.exports.BinarySearchTree;
