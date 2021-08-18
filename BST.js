@@ -45,35 +45,27 @@ class BinarySearchTree {
   }
 
   find(value){
-    if (this.root === null) return undefined;
     let checkNode = this.root;
-    while(true){
-        if(value == checkNode.value) return checkNode;
-        if(value>checkNode.value) {
-          if(checkNode.right!=null) {
-            checkNode=checkNode.right;
-          }
-          else{
-            return undefined;
-          }
+    while(checkNode){
+      if(value == checkNode.value) return checkNode;
+      if(value>checkNode.value) {
+          checkNode=checkNode.right;
       }
       if(value<checkNode.value) {
-        if(checkNode.left!=null){
-          checkNode=checkNode.left;
-        }
-        else {
-          return undefined;
-        }
+        checkNode=checkNode.left;
       } 
+    }  
+      return undefined;
     }
-  }
+  
 
 }
 
 
 
-// const tree = new BinarySearchTree();
+const tree = new BinarySearchTree();
 
+// console.log(tree.find(100));
 // tree.insert(100);
 // tree.insert(50);
 // tree.insert(72);
