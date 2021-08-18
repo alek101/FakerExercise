@@ -44,6 +44,28 @@ class BinarySearchTree {
     return this;
   }
 
+  search(value){
+    let checkNode = this.root;
+    while(true){
+        if(value == checkNode.value) return checkNode;
+        if(value>checkNode.value) {
+          if(checkNode.right!=null) {
+            checkNode=checkNode.right;
+          }
+          else{
+            return undefined;
+          }
+      }
+      if(value<checkNode.value) {
+        if(checkNode.left!=null){
+          checkNode=checkNode.left;
+        }
+        else {
+          return undefined;
+        }
+      } 
+    }
+  }
 
 }
 
@@ -53,7 +75,10 @@ tree.insert(100);
 tree.insert(50);
 tree.insert(72);
 tree.insert(101);
-tree.insert(100);
+// tree.insert(100);
 tree.insert(150);
 tree.insert(20);
-console.log(tree);
+// console.log(tree);
+console.log(tree.search(100));
+console.log(tree.search(20));
+console.log(tree.search(53));
