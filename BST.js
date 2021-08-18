@@ -44,7 +44,8 @@ class BinarySearchTree {
     return this;
   }
 
-  search(value){
+  find(value){
+    if (this.root === null) return undefined;
     let checkNode = this.root;
     while(true){
         if(value == checkNode.value) return checkNode;
@@ -81,6 +82,6 @@ module.exports.BinarySearchTree;
 // tree.insert(150);
 // tree.insert(20);
 // // console.log(tree);
-// console.log(tree.search(100));
-// console.log(tree.search(20));
-// console.log(tree.search(53));
+// console.log(tree.find(100));
+// console.log(tree.find(20));
+// console.log(tree.find(53));
