@@ -76,6 +76,7 @@ class SinglyLinkedList{
     if(this.length==0){
       this.head=node;
       this.tail=node;
+      this.length++;
       return this;
     }
     node.next=this.head;
@@ -152,12 +153,4 @@ class SinglyLinkedList{
   
 }
 
-const list = new SinglyLinkedList()
-
-list.push("hello")
-list.push("goodbye")
-list.push("next1")
-list.push("next2")
-console.log(list);
-list.reverse();
-console.log(list)
+module.exports.SinglyLinkedList;

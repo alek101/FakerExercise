@@ -65,6 +65,7 @@ class DoublyLinkedList{
     if(this.length==0){
       this.head=node;
       this.tail=node;
+      this.length++;
       return this;
     }
     node.next=this.head;
@@ -145,38 +146,4 @@ class DoublyLinkedList{
 
 }
 
-
-const list = new DoublyLinkedList()
-
-function cll() { console.log(list)};
-
-list.push("hello");
-// console.log(list);
-list.push("world");
-// cll();
-list.push("uraa");
-// cll();
-list.push("uraa2");
-// cll();
-// list.pop();
-// cll();
-// list.unshift('1st');
-// cll();
-// list.shift();
-// cll();
-// console.log(list.get(0))
-// console.log(list.get(2))
-list.push('12');
-list.push('24');
-// console.log('0',list.get(0))
-// console.log('1',list.get(1))
-// console.log('2',list.get(2))
-// console.log('3',list.get(3))
-// console.log('4',list.get(4))
-// console.log('5',list.get(5))
-// console.log('6',list.get(6))
-console.log(list.get(4))
-list.insert('insert',4);
-console.log(list.get(4))
-list.remove(4);
-console.log(list.get(4))
+module.exports.DoublyLinkedList;
