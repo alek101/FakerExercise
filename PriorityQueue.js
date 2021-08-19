@@ -1,4 +1,4 @@
-class MaxBinaryHeap {
+class PriorityQueue {
   constructor(){
     this.values=[];
   }
@@ -63,17 +63,3 @@ class MaxBinaryHeap {
   }
 }
 
-const mbh = new MaxBinaryHeap();
-
-mbh.insert(10);
-mbh.insert(23);
-mbh.insert(45);
-mbh.insert(7);
-mbh.insert(9);
-mbh.insert(86);
-mbh.insert(43);
-mbh.insert(45);
-mbh.insert(100);
-
-console.log(mbh.values);
-console.log(mbh.removeMax());
