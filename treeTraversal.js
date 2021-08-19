@@ -116,16 +116,33 @@ function bfs(tree){
 function dfs_pre_order(tree){
   const visited=[];
 
-  function reccursive(node,visited){
-    if(node==null) return visited;
+  function reccursive(node){
+    if(node==null) return ;
     visited.push(node);
-    reccursive(node.left,visited);
-    reccursive(node.right,visited);
+    reccursive(node.left);
+    reccursive(node.right);
   }
 
-  reccursive(tree.root,visited)
+  reccursive(tree.root)
 
   return visited;
 }
 
 console.log(dfs_pre_order(tree));
+
+function dfs_post_order(tree){
+  const visited=[];
+
+  function reccursive(node){
+    if(node==null) return ;
+    reccursive(node.left);
+    reccursive(node.right);
+    visited.push(node);
+  }
+
+  reccursive(tree.root)
+
+  return visited;
+}
+
+console.log(dfs_post_order(tree));
