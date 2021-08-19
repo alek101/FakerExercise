@@ -78,6 +78,7 @@ kju.enqueue('value',86);
 kju.enqueue('value',43);
 kju.enqueue('value',45);
 kju.enqueue('value',100);
+kju.enqueue('value',9);
 
 console.log(kju.queue);
 console.log(kju.dequeue());
