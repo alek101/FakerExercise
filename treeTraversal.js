@@ -128,7 +128,7 @@ function dfs_pre_order(tree){
   return visited;
 }
 
-console.log(dfs_pre_order(tree));
+// console.log(dfs_pre_order(tree));
 
 function dfs_post_order(tree){
   const visited=[];
@@ -145,4 +145,20 @@ function dfs_post_order(tree){
   return visited;
 }
 
-console.log(dfs_post_order(tree));
+// console.log(dfs_post_order(tree));
+function dfs_in_order(tree){
+  const visited=[];
+
+  function reccursive(node){
+    if(node==null) return ;
+    reccursive(node.left);
+    visited.push(node);
+    reccursive(node.right);
+  }
+
+  reccursive(tree.root)
+
+  return visited;
+}
+
+// console.log(dfs_in_order(tree));
