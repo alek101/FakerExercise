@@ -6,7 +6,7 @@ class MaxBinaryHeap {
   bubleUp(){
     let index = this.values.length-1;
     let parentIndex = Math.floor((index-1)/2);
-    while(this.values[index]>this.values[parentIndex] && parentIndex>=0){
+    while(parentIndex>=0 && this.values[index]>this.values[parentIndex]){
       let temp = this.values[index];
       this.values[index] = this.values[parentIndex];
       this.values[parentIndex] = temp;
@@ -16,14 +16,8 @@ class MaxBinaryHeap {
   }
 
   insert(val){
-    if(this.values.indexOf(val)==-1){
       this.values.push(val);
       this.bubleUp();
-      return this.values;
-    }
-    else{
-      return false;
-    }
   }
 
   returnBiggestChild(index){
