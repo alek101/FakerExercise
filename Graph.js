@@ -26,7 +26,6 @@ class Graph {
 
   removeVertex(vertex){
     const list = this.adjacencyList[vertex].slice();
-    console.log(list)
     if(list.length > 0){
       for(let conn of list){
         this.removeEdge(conn, vertex);
