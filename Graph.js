@@ -58,8 +58,7 @@ class Graph {
     if (start_vertex==null) return undefined;
     const result=[];
     const visited={};
-    const stack=[];
-    stack.push(start_vertex);
+    const stack=[start_vertex];
 
     while (stack.length>0){
       let vertex=stack.pop();
@@ -69,6 +68,27 @@ class Graph {
         for(const conn of this.adjacencyList[vertex]){
           if(!visited[conn]){
             stack.push(conn);
+          }
+        }
+      }
+    }
+    return result;
+  }
+
+  bfs(start_vertex){
+    if (start_vertex==null) return undefined;
+    const result=[];
+    const visited={};
+    const queue=[start_vertex];
+
+    while (queue.length>0){
+      let vertex=queue.shift();
+      result.push(vertex);
+      visited[vertex]=true;
+      if(this.adjacencyList[vertex]){
+        for(const conn of this.adjacencyList[vertex]){
+          if(!visited[conn]){
+            queue.push(conn);
           }
         }
       }
@@ -93,3 +113,4 @@ g.addEdge("Dallas","Aspen");
 console.log(g.adjacencyList);
 console.log(g.dfs_r("Aspen"));
 console.log(g.dfs_i("Aspen"));
+console.log(g.bfs("Aspen"));
