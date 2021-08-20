@@ -36,12 +36,38 @@ class HashTable {
     return undefined;
   }
 
+  keys() {
+    const keys = [];
+    for(let km of this.keyMap){
+      if(km){
+        for(let member of km){
+        keys.push(member[0])
+        }
+      }
+    }
+    return keys;
+  }
+
+  values() {
+    const values = [];
+    for(let km of this.keyMap){
+      if(km){
+        for(let member of km){
+        values.push(member[1])
+        }
+      }
+    }
+    return values;
+  }
+
 }
 
 const hashTable = new HashTable();
 // console.log(hashTable.keyMap)
 hashTable.set('pink',5);
 // console.log(hashTable.keyMap)
-// hashTable.set('pink',5);
+hashTable.set('yellow',15);
 console.log(hashTable.get('pink'));
 console.log(hashTable.get('frewfewfewf'));
+console.log(hashTable.keys());
+console.log(hashTable.values());
