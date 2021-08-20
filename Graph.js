@@ -34,12 +34,13 @@ class Graph {
     delete this.adjacencyList[vertex];
   }
 
-  dfs_r(vertex){
-    if (vertex==null) return undefined;
+  dfs_r(start_vertex){
+    if (start_vertex==null) return undefined;
     const result=[];
     const visited={};
+    // option adjestancyList = this.adjestancyList that this thing
     function helper(vertex){
-      if(visited[vertex]) return result;
+      if(!vertex || visited[vertex]) return null;
       result.push(vertex);
       visited[vertex]=true;
       if(this.adjacencyList[vertex]){
@@ -48,8 +49,30 @@ class Graph {
         }
       }
     }
-    helper.call(this,vertex);
+    helper.call(this,start_vertex);
 
+    return result;
+  }
+
+  dfs_i(start_vertex){
+    if (start_vertex==null) return undefined;
+    const result=[];
+    const visited={};
+    const stack=[];
+    stack.push(start_vertex);
+
+    while (stack.length>0){
+      let vertex=stack.pop();
+      result.push(vertex);
+      visited[vertex]=true;
+      if(this.adjacencyList[vertex]){
+        for(const conn of this.adjacencyList[vertex]){
+          if(!visited[conn]){
+            stack.push(conn);
+          }
+        }
+      }
+    }
     return result;
   }
 }
@@ -69,3 +92,4 @@ g.removeVertex("Delete");
 g.addEdge("Dallas","Aspen");
 console.log(g.adjacencyList);
 console.log(g.dfs_r("Aspen"));
+console.log(g.dfs_i("Aspen"));
