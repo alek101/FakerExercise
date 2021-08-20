@@ -33,6 +33,25 @@ class Graph {
     } 
     delete this.adjacencyList[vertex];
   }
+
+  dfs_r(vertex){
+    if (vertex==null) return undefined;
+    const result=[];
+    const visited={};
+    function helper(vertex){
+      if(visited[vertex]) return result;
+      result.push(vertex);
+      visited[vertex]=true;
+      if(this.adjacencyList[vertex]){
+        for(const conn of this.adjacencyList[vertex]){
+          helper.call(this, conn);
+        }
+      }
+    }
+    helper.call(this,vertex);
+
+    return result;
+  }
 }
 
 const g = new Graph();
@@ -49,3 +68,4 @@ g.addEdge("Dallas","Delete");
 g.removeVertex("Delete");
 g.addEdge("Dallas","Aspen");
 console.log(g.adjacencyList);
+console.log(g.dfs_r("Aspen"));
