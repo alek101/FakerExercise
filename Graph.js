@@ -25,10 +25,11 @@ class Graph {
   }
 
   removeVertex(vertex){
-    const list = this.adjacencyList[vertex];
+    const list = this.adjacencyList[vertex].slice();
+    console.log(list)
     if(list.length > 0){
-      for(const connection in list){
-        this.removeEdge(vertex,connection);
+      for(let conn of list){
+        this.removeEdge(conn, vertex);
       }
     } 
     delete this.adjacencyList[vertex];
@@ -47,5 +48,5 @@ g.addVertex("Delete");
 g.addEdge("Tokyo","Delete");
 g.addEdge("Dallas","Delete");
 g.removeVertex("Delete");
-
+g.addEdge("Dallas","Aspen");
 console.log(g.adjacencyList);
