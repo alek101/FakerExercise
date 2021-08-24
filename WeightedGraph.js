@@ -28,10 +28,27 @@ class WeightedGraph {
   }
 
   addEdge(vertex1, vertex2, weight) {
-
       this.adjacencyList[vertex1].push({node: vertex2, weight} );
       this.adjacencyList[vertex2].push({node: vertex1, weight} );
+  }
 
+  dijkstra(start, end){
+    const distances={};
+    const previous={}
+    Object.keys(this.adjacencyList).forEach(node=>
+      {
+        distances[node]=Infinity;
+        previous[node]=null;
+      }
+    );
+    distances[start]=0;
+    
+    const queue = 
+    
+
+
+
+    console.log(distances,previous)
   }
 
 }
@@ -50,4 +67,6 @@ g.addEdge("A", "C", 5)
 
 g.addEdge("A", "B", 9)
 
-console.log(g.adjacencyList)
+// console.log(g.adjacencyList)
+
+g.dijkstra("A","C")
