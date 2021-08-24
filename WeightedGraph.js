@@ -71,7 +71,15 @@ class WeightedGraph {
       current = queue.dequeue().val;
     }
     // console.log('distances', distances, 'previous', previous, 'vistied',visited, 'queue', queue);
-    return distances[end];
+
+    const path = [];
+    let next = end;
+    while (next){
+      path.push(next);
+      next = previous[next];
+    }
+
+    return path.reverse();
   }
 
   DijakstraSolution(start, finish){
@@ -150,4 +158,4 @@ g.addEdge("D", "F", 1)
 
 console.log(g.dijkstra("A","E"))
 
-console.log(g.DijakstraSolution("A", "E"))
+// console.log(g.DijakstraSolution("A", "E"))
