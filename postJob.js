@@ -65,6 +65,29 @@ function getOneArray(array){
   return array[ran];
 }
 
+function getTimes(){
+  const f1 = faker.datatype.number({min: 0, max: 23});
+  const f2 = faker.datatype.number({min: 0, max: 23});
+  const f3 = faker.datatype.number({min:0, max:59});
+  const f4 = faker.datatype.number({min:0, max:59});
+  let toTime, fromTime;
+
+  if(f1>f2) {
+    toTime = f1+':'+f3;
+    fromTime = f2+':'+f4;
+  } else if (f2>f1) {
+    toTime = f2+':'+f3;
+    fromTime = f1+':'+f4;
+  } else if(f3>f4) {
+    toTime = f1+':'+f3;
+    fromTime = f2+':'+f4;
+  } else {
+    toTime = f1+':'+f4;
+    fromTime = f2+':'+f3;
+  }
+  return {toTime, fromTime};
+}
+
 async function main(){
   // const web=`http://localhost:3000`;
   const web=`https://partajmer.30hills.com`;
@@ -78,6 +101,8 @@ async function main(){
   const longLorem='At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat';
   const now = new Date();
 
+  const {fromTime, toTime} = getTimes();
+
   const body={
     title: faker.lorem.word(),
     description: faker.lorem.sentence(),
@@ -88,8 +113,8 @@ async function main(){
     toDate: faker.date.future(2, now),
     price: faker.datatype.number({min: 100, max: 1000}),
     // price: -1000,
-    fromTime: faker.datatype.number({min: 0, max: 23})+':'+faker.datatype.number({min:0, max:59}),
-    toTime: faker.datatype.number({min: 0, max: 23})+':'+faker.datatype.number({min:0, max:59}),
+    fromTime,
+    toTime,
     type: getOneArray(['job', 'service']),
     priceType: getOneArray(['fixed', 'per hour']),
     tags: faker.lorem.words().split(' '),
@@ -113,14 +138,38 @@ async function main(){
 
   // await console.log(job);
   console.log('novi');
+
+  return new Date();
 }
 
-function bombardemnt(num=100){
-  for (let i=0; i<num; i++){
+const t1 = new Date();
+
+async function bombardemnt(num=100){
+  for (let i=0; i<num-1; i++){
     main();
   }
+  const t2 = await main();
+  console.log(t2-t1);
 }
 
-bombardemnt(200)
+// bombardemnt(200)
 
 // console.log(main());
+
+
+
+function multipleBombardment(numRep, num){
+  let repet = 0;
+  console.log(`Interval ${repet+1}`);
+  bombardemnt(num);
+  repet++;
+
+  let interval = setInterval(()=>{
+    console.log(`Interval ${repet+1}`);
+    bombardemnt(num);
+    repet++;
+    if(repet>=numRep) clearInterval(interval);
+  }, 60000)
+}
+
+multipleBombardment(50,200);
