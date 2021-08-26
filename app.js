@@ -29,3 +29,4 @@ const {locations} = require('./lib/locations')
 console.log(faker.internet.password());
 console.log(faker.datatype.number({'min': 1, 'max': 5},));
 console.log(faker.address.city());
+console.log(faker.time.recent());
