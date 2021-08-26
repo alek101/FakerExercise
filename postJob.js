@@ -104,7 +104,8 @@ async function main(){
   const {fromTime, toTime} = getTimes();
 
   const body={
-    title: faker.lorem.word(),
+    // title: faker.lorem.word(),
+    title: getOneArray(['Motaj Kablove',"It's Friday then",'Dajem kraljestvo za paginaciju', '6:1']),
     description: faker.lorem.sentence(),
     // description: longLorem,
     category: oneCategory,
