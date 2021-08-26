@@ -95,7 +95,7 @@ async function main(){
     tags: faker.lorem.words().split(' '),
   };
 
-  console.log({body});
+  // console.log({body});
 
   const options = {
     method: 'POST',
@@ -121,6 +121,6 @@ function bombardemnt(num=100){
   }
 }
 
-bombardemnt(1)
+bombardemnt(200)
 
 // console.log(main());
