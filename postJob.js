@@ -44,7 +44,7 @@ async function fetchData(url,options){
   let result;
   await fetch(url,options)
   .then(res=>{
-    console.log(res)
+    // console.log(res)
     return res.json()})
   .then(res=> {
     result = res;
