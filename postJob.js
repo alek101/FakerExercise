@@ -44,7 +44,7 @@ async function fetchData(url,options){
   let result;
   await fetch(url,options)
   .then(res=>{
-    // console.log(res)
+    console.log(res)
     return res.json()})
   .then(res=> {
     result = res;
@@ -117,6 +117,7 @@ async function main(){
     fromTime,
     toTime,
     type: getOneArray(['job', 'service']),
+    // type: 'nesto',
     priceType: getOneArray(['fixed', 'per hour']),
     tags: faker.lorem.words().split(' '),
   };
@@ -166,11 +167,11 @@ function multipleBombardment(numRep, num){
   repet++;
 
   let interval = setInterval(()=>{
+    if(repet>=numRep) clearInterval(interval);
     console.log(`Interval ${repet+1}`);
     bombardemnt(num);
     repet++;
-    if(repet>=numRep) clearInterval(interval);
   }, 60000)
 }
 
-multipleBombardment(50,200);
+multipleBombardment(1,1);
